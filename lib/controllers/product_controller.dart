@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class ProductController extends GetxController {
   var isLoading = true.obs;
-  var productList = List<ProductModel>().obs;
+  RxList<ProductModel> productList = <ProductModel>[].obs;
 
   @override
   void onInit() {
