@@ -3,8 +3,7 @@ import 'package:cart_app/model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_star_rating_null_safety/smooth_star_rating_null_safety.dart';
-
-import '../database/new_helper.dart';
+import '../database/database_helper.dart';
 import '../main.dart';
 import 'image_zoomer.dart';
 
@@ -121,7 +120,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             borderColor: Colors.black,
                             animationDuration: const Duration(seconds: 1),
                             icon: const Icon(Icons.error, color: Colors.black),
-                            duration: const Duration(seconds: 3),
+                            duration: const Duration(milliseconds: 1500),
                             margin: const EdgeInsets.all(10),
                             isDismissible: true,
                             dismissDirection: DismissDirection.horizontal,
@@ -149,11 +148,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const Text(
-                                'Add to cart',
+                                'Add to Cart',
                                 style: TextStyle(
+                                    fontFamily: 'MyFont',
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 20),
+                                    fontSize: 25),
                               ),
                               const SizedBox(width: 15),
                               const Divider(),

@@ -1,10 +1,11 @@
+import 'package:cart_app/Screens/payment_screen.dart';
 import 'package:cart_app/Screens/product_list_view.dart';
-import 'package:cart_app/controllers/controller2.dart';
 import 'package:cart_app/main.dart';
+import 'package:cart_app/screens/image_zoomer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../database/new_helper.dart';
+import '../database/database_helper.dart';
 import '../model/product_model.dart';
 
 class CartScreen extends StatefulWidget {
@@ -15,7 +16,6 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  // List<Map<String, dynamic>> localDataList = []; // Add this line
 
   @override
   void initState() {
@@ -44,12 +44,14 @@ class _CartScreenState extends State<CartScreen> {
         // Proceed to pay button
         bottomNavigationBar: InkWell(
           onTap: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Payment mode not added'),
-                duration: Duration(seconds: 2),
-              ),
-            );
+            Get.to(PaymentScreen());
+
+            // ScaffoldMessenger.of(context).showSnackBar(
+            //   const SnackBar(
+            //     content: Text('Payment mode not added'),
+            //     duration: Duration(seconds: 2),
+            //   ),
+            // );
           },
           child: Container(
             color: Colors.yellow.shade600,
@@ -58,7 +60,8 @@ class _CartScreenState extends State<CartScreen> {
             child: const Text(
               'Proceed to Pay',
               style: TextStyle(
-                fontSize: 20.0,
+                fontFamily: 'MyFont',
+                fontSize: 24.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -119,65 +122,6 @@ class _CartScreenState extends State<CartScreen> {
                         },
                       )),
               ),
-              // FutureBuilder<List<Map<String, dynamic>>>(
-              //   future: LocalDataBase().getDataLocally(),
-              //   builder: (context, snapshot) {
-              //     if (snapshot.connectionState == ConnectionState.waiting) {
-              //       return const CircularProgressIndicator();
-              //     } else if (snapshot.hasError) {
-              //       return Text('Error: ${snapshot.error}');
-              //     } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              //       return Column(
-              //         children: [
-              //           const Text(
-              //             'No items availabe in your cart.',
-              //             style: TextStyle(
-              //                 fontSize: 19, fontWeight: FontWeight.bold),
-              //           ),
-              //           const SizedBox(
-              //             height: 20,
-              //           ),
-              //           ElevatedButton(
-              //               onPressed: () {
-              //                 Get.offAll(ProductListView());
-              //               },
-              //               child: const Text(
-              //                 'Explore Home Page',
-              //                 style: TextStyle(fontSize: 18),
-              //               ))
-              //         ],
-              //       );
-              //     } else {
-              //       final localDataList = snapshot.data!;
-
-              //       return Expanded(
-              //         child: ListView.builder(
-              //           itemCount: localDataList.length,
-              //           itemBuilder: (context, index) {
-              //             final title = localDataList[index]['title'];
-              //             final image = localDataList[index]['image'];
-              //             final price = localDataList[index]['price'];
-              //             final id = localDataList[index]['id'];
-              //             return Column(
-              //               children: [
-              //                 CartItem(
-              //                   product: ProductModel(
-              //                       price: price,
-              //                       image: image,
-              //                       title: title,
-              //                       id: id),
-              //                 ),
-              //                 const SizedBox(
-              //                   height: 20,
-              //                 ),
-              //               ],
-              //             );
-              //           },
-              //         ),
-              //       );
-              //     }
-              //   },
-              // ),
             ],
           ),
         ));
@@ -186,7 +130,6 @@ class _CartScreenState extends State<CartScreen> {
 
 class CartItem extends StatefulWidget {
   final ProductModel product;
-  final CartController cartController = CartController();
 
   CartItem({Key? key, required this.product}) : super(key: key);
 
@@ -208,7 +151,9 @@ class _CartItemState extends State<CartItem> {
                 elevation: 3,
                 color: Colors.grey.shade300,
                 child: ListTile(
-                  leading: Image.network(widget.product.image.toString()),
+                  leading: InkWell(
+                      onTap: () => Get.to(ImageZoomer(product: widget.product)),
+                      child: Image.network(widget.product.image.toString())),
                   title: Text(widget.product.title.toString(),
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 20)),

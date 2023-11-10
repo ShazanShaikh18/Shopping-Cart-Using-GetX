@@ -43,20 +43,11 @@ class LocalDataBase {
     getDataLocally();
   }
 
-  // Future addDataLocally({title, image, price}) async {
-  //   final db = await database;
-  //   await db.insert("Localdata", {"title": title});
-  //   print(
-  //       'Title: ${title} And Image: ${image} And Price: ${price} Added to database successfully');
-  //   // getDataLocally();
-  //   return 'Added';
-  // }
-
   Future<void> addDataLocally({
     required String title,
     required String image,
     double price = 0.0,
-    int quantity = 0,
+    int quantity = 1,
     required int id,
   }) async {
     final db = await database;
@@ -84,6 +75,15 @@ class LocalDataBase {
     getDataLocally();
     return print('Data Deleted Successfully!');
   }
+
+  // Future addDataLocally({title, image, price}) async {
+  //   final db = await database;
+  //   await db.insert("Localdata", {"title": title});
+  //   print(
+  //       'Title: ${title} And Image: ${image} And Price: ${price} Added to database successfully');
+  //   // getDataLocally();
+  //   return 'Added';
+  // }
 
   // Future readalldata() async {
   //   final db = await database;

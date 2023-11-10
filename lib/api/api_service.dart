@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import '../model/product_model.dart';
@@ -14,7 +16,9 @@ class ApiService {
 
       return producFromJson(jsonString);
     } else {
-      return null;
+      return Get.defaultDialog(
+          title: "API response failed!",
+          content: Text("API doesn't give correct response"));
     }
   }
 }
