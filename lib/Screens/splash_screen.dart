@@ -1,8 +1,9 @@
 import 'dart:async';
 
-import 'package:cart_app/Screens/product_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'product_list_view.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    Timer(const Duration(milliseconds: 3500), () {
+    Timer(const Duration(milliseconds: 1800), () {
       Get.off(() => ProductListView());
     });
   }
@@ -37,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 50,
             ),
             const Text(
-              'Cart App',
+              'Shopping Cart App',
               style: TextStyle(
                   fontFamily: 'MyFont',
                   fontSize: 40,
@@ -56,7 +57,12 @@ class _SplashScreenState extends State<SplashScreen> {
                     fontFamily: 'MyFont',
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
-                    color: Colors.teal),
+                    //color: Colors.teal,
+                    shadows: [
+                      Shadow(
+                          color: Color.fromARGB(255, 252, 95, 95),
+                          offset: Offset(1.5, 1.5))
+                    ]),
               ),
             ),
           ],

@@ -1,5 +1,6 @@
-import 'package:cart_app/Model/product_model.dart';
 import 'package:http/http.dart' as http;
+
+import '../model/product_model.dart';
 
 class ApiService {
   static var client = http.Client();

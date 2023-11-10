@@ -1,10 +1,12 @@
-import 'package:cart_app/api/api_service.dart';
-import 'package:cart_app/Model/product_model.dart';
 import 'package:get/get.dart';
+
+import '../api/api_service.dart';
+import '../model/product_model.dart';
 
 class ProductController extends GetxController {
   var isLoading = true.obs;
   RxList<ProductModel> productList = <ProductModel>[].obs;
+
 
   @override
   void onInit() {
