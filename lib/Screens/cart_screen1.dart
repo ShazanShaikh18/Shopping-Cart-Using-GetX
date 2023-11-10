@@ -31,11 +31,13 @@ class _CartScreenState extends State<CartScreen> {
           backgroundColor: Colors.black,
           title: const Row(
             children: [
-              Text('My Cart'),
+              SizedBox(width: 90),
+              Text('My Cart',
+                  style: TextStyle(fontFamily: 'MyFont', fontSize: 22)),
               SizedBox(
                 width: 10,
               ),
-              Icon(Icons.shopping_cart_outlined)
+              Icon(CupertinoIcons.shopping_cart)
             ],
           ),
         ),

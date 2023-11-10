@@ -17,7 +17,11 @@ class ProductListView extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.black,
-        title: const Text('Product List'),
+        title: const Text(
+          'Product List',
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontFamily: 'MyFont', fontSize: 22),
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -128,7 +132,6 @@ class ProductListView extends StatelessWidget {
                             const Divider(
                               thickness: 2,
                             ),
-
                             Chip(
                                 backgroundColor:
                                     const Color.fromARGB(255, 203, 203, 203),
@@ -138,12 +141,6 @@ class ProductListView extends StatelessWidget {
                                       fontWeight: FontWeight.bold,
                                       fontSize: 28),
                                 )),
-
-                            // Text(
-                            //   '\$ ' + product.price.toString(),
-                            //   style: TextStyle(
-                            //       fontWeight: FontWeight.bold, fontSize: 25),
-                            // )
                           ],
                         ),
                       ),

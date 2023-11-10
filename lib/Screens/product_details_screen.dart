@@ -140,7 +140,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       },
                       child: Container(
                         height: 70,
-                        //width: 100,
                         decoration: BoxDecoration(
                             color: Colors.black,
                             border: Border.all(),
